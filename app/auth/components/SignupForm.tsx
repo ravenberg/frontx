@@ -12,10 +12,10 @@ export const SignupForm = (props: SignupFormProps) => {
   const [signupMutation] = useMutation(signup)
   return (
     <div>
-      <h1>Create an Account</h1>
+      <h1 className="text-4xl mb-2">Create an Account</h1>
 
       <Form
-        submitText="Create Account"
+        actions={<button type="submit" className="bg-purple-600 text-white p-2">Create</button>}
         schema={Signup}
         initialValues={{ email: "", password: "" }}
         onSubmit={async (values) => {

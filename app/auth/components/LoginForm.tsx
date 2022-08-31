@@ -13,12 +13,22 @@ type LoginFormProps = {
 
 export const LoginForm = (props: LoginFormProps) => {
   const [loginMutation] = useMutation(login)
+
+  const actions = (
+    <>
+      <button type="submit" className="bg-purple-600 text-white p-2">Login</button>
+      <span className="mx-1">or</span>
+      <Link href={Routes.SignupPage()}>
+      <a className="p-2 bg-purple-600 text-white">Sign Up</a>
+      </Link>
+    </>
+  )
+
   return (
     <div>
-      <h1>Login</h1>
-
+      <h1 className="text-4xl mb-2">Login</h1>
       <Form
-        submitText="Login"
+        actions={actions}
         schema={Login}
         initialValues={{ email: "", password: "" }}
         onSubmit={async (values) => {
@@ -41,17 +51,10 @@ export const LoginForm = (props: LoginFormProps) => {
         <LabeledTextField name="password" label="Password" placeholder="Password" type="password" />
         <div>
           <Link href={Routes.ForgotPasswordPage()}>
-            <a>Forgot your password?</a>
+            <a className="text-purple-600">Forgot your password?</a>
           </Link>
         </div>
       </Form>
-
-      <div style={{ marginTop: "1rem" }}>
-        Or{" "}
-        <Link href={Routes.SignupPage()}>
-          <a>Sign Up</a>
-        </Link>
-      </div>
     </div>
   )
 }
